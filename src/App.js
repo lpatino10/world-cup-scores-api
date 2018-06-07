@@ -6,7 +6,7 @@ class App extends Component {
   componentDidMount() {
     const fetchOptions = {
       headers: {
-        'X-Auth-Token': process.env.API_KEY,
+        'X-Auth-Token': process.env.REACT_APP_API_KEY,
       },
     };
 
