@@ -3,6 +3,20 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    const fetchOptions = {
+      headers: {
+        'X-Auth-Token': process.env.API_KEY,
+      },
+    };
+
+    fetch('http://api.football-data.org/v1/competitions/467', fetchOptions)
+      .then(res => res.json())
+      .then(body => console.log(body.caption));
+
+    //setInterval(() => { }, 10000);
+  }
+
   render() {
     return (
       <div className="App">
