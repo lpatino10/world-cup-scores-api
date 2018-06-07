@@ -10,7 +10,7 @@ class App extends Component {
       },
     };
 
-    fetch('http://api.football-data.org/v1/competitions/467', fetchOptions)
+    fetch('//api.football-data.org/v1/competitions/467', fetchOptions)
       .then(res => res.json())
       .then(body => console.log(body.caption));
 
