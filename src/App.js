@@ -10,10 +10,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //const now = moment();
+    const now = moment();
 
     // for testing, since we haven't started yet
-    const now = moment().add(8, 'days');
+    //const now = moment().add(8, 'days');
 
     const currentDateString = now.format('YYYY-MM-DD');
 
