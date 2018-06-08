@@ -60,6 +60,7 @@ class App extends React.Component {
       <div className="App">
         {this.state.currentDateScores && this.state.currentDateScores.map(match => (
           <ScoreCard
+            key={`${match.homeTeamName}${match.awayTeamName}`}
             homeTeamName={match.homeTeamName}
             homeTeamScore={match.homeTeamScore}
             awayTeamName={match.awayTeamName}
