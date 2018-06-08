@@ -1,0 +1,8 @@
+.score-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  margin: 100px;
+}

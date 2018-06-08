@@ -58,15 +58,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.currentDateScores && this.state.currentDateScores.map(match => (
-          <ScoreCard
-            key={`${match.homeTeamName}${match.awayTeamName}`}
-            homeTeamName={match.homeTeamName}
-            homeTeamScore={match.homeTeamScore}
-            awayTeamName={match.awayTeamName}
-            awayTeamScore={match.awayTeamScore}
-          />
-        ))}
+        <div className="score-cards-container">
+          {this.state.currentDateScores && this.state.currentDateScores.map(match => (
+            <ScoreCard
+              key={`${match.homeTeamName}${match.awayTeamName}`}
+              homeTeamName={match.homeTeamName}
+              homeTeamScore={match.homeTeamScore}
+              awayTeamName={match.awayTeamName}
+              awayTeamScore={match.awayTeamScore}
+            />
+          ))}
+        </div>
       </div>
     );
   }
