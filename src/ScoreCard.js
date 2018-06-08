@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ScoreCard = ({
+const ScoreCard = ({
   homeTeamName,
   homeTeamScore,
   awayTeamName,
@@ -15,3 +15,5 @@ export const ScoreCard = ({
     </div>
   </div>
 );
+
+export default ScoreCard;

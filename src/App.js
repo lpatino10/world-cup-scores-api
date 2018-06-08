@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import moment from 'moment';
-import logo from './logo.svg';
 import './App.css';
 import ScoreCard from './ScoreCard';
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   componentDidMount() {
-    const now = moment();
+    //const now = moment();
 
     // for testing, since we haven't started yet
-    //const now = moment().add(7, 'days');
+    const now = moment().add(8, 'days');
 
     const currentDateString = now.format('YYYY-MM-DD');
 
@@ -22,7 +26,31 @@ class App extends Component {
 
     fetch(fetchUrl, fetchOptions)
       .then(response => response.json())
-      .then(body => console.log(body));
+      .then(body => {
+        const currentDateScores = body.fixtures.map(fixture => {
+          const {
+            homeTeamName,
+            result: {
+              goalsHomeTeam,
+            },
+            awayTeamName,
+            result: {
+              goalsAwayTeam,
+            },
+          } = fixture;
+
+          return {
+            homeTeamName,
+            homeTeamScore: goalsHomeTeam || 0,
+            awayTeamName,
+            awayTeamScore: goalsAwayTeam || 0,
+          };
+        });
+
+        this.setState({
+          currentDateScores,
+        });
+      });
 
     //setInterval(() => { }, 10000);
   }
@@ -30,12 +58,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ScoreCard
-          homeTeamName={}
-          homeTeamScore={}
-          awayTeamName={}
-          awayTeamScore={}
-        />
+        {this.state.currentDateScores && this.state.currentDateScores.map(match => (
+          <ScoreCard
+            homeTeamName={match.homeTeamName}
+            homeTeamScore={match.homeTeamScore}
+            awayTeamName={match.awayTeamName}
+            awayTeamScore={match.awayTeamScore}
+          />
+        ))}
       </div>
     );
   }
