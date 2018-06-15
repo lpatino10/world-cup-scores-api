@@ -9,6 +9,11 @@ var debug = require('debug')('testapp:server');
 var http = require('http');
 
 /**
+ * Set up dotenv to read from config file.
+ */
+require('dotenv').config()
+
+/**
  * Get port from environment and store in Express.
  */
 
